@@ -297,21 +297,21 @@ namespace Ping_Pong {
                 Timer4.Enabled = true;
                 Timer5.Enabled = false;
 
-                if (ball.Speed == 10) {
+                if (ball.Speed == 20) {
 
                 }
                 else {
                     ball.Speed++;
                 }
 
-                if (wall1.Speed == 10) {
+                if (wall1.Speed == 20) {
 
                 }
                 else {
                     wall1.Speed++;
                 }
 
-                if (wall2.Speed == 10) {
+                if (wall2.Speed == 20) {
 
                 }
                 else {
@@ -326,21 +326,21 @@ namespace Ping_Pong {
                 Timer4.Enabled = false;
                 Timer5.Enabled = true;
 
-                if (ball.Speed == 10) {
+                if (ball.Speed == 20) {
 
                 }
                 else {
                     ball.Speed++;
                 }
 
-                if (wall1.Speed == 10) {
+                if (wall1.Speed == 20) {
 
                 }
                 else {
                     wall1.Speed++;
                 }
 
-                if (wall2.Speed == 10) {
+                if (wall2.Speed == 20) {
 
                 }
                 else {
@@ -355,21 +355,21 @@ namespace Ping_Pong {
                 Timer4.Enabled = false;
                 Timer5.Enabled = false;
 
-                if (ball.Speed == 10) {
+                if (ball.Speed == 20) {
 
                 }
                 else {
                     ball.Speed++;
                 }
 
-                if (wall1.Speed == 10) {
+                if (wall1.Speed == 20) {
 
                 }
                 else {
                     wall1.Speed++;
                 }
 
-                if (wall2.Speed == 10) {
+                if (wall2.Speed == 20) {
 
                 }
                 else {
@@ -384,21 +384,21 @@ namespace Ping_Pong {
                 Timer4.Enabled = false;
                 Timer5.Enabled = false;
 
-                if (ball.Speed == 10) {
+                if (ball.Speed == 20) {
 
                 }
                 else {
                     ball.Speed++;
                 }
 
-                if (wall1.Speed == 10) {
+                if (wall1.Speed == 20) {
 
                 }
                 else {
                     wall1.Speed++;
                 }
 
-                if (wall2.Speed == 10) {
+                if (wall2.Speed == 20) {
 
                 }
                 else {

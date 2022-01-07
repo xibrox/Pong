@@ -25,9 +25,9 @@ namespace Ping_Pong {
             Down = down;
         }
 
-        public Boundary(Size size, Point location) {
-            Size = size;
+        public Boundary(Point location, Size size) {
             Location = location;
+            Size = size;
         }
     }
 }

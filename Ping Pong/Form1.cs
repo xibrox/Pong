@@ -13,6 +13,8 @@ namespace Ping_Pong {
         Ball ball;
         Wall wall1;
         Wall wall2;
+        Random rnd = new Random();
+        int num = 0;
 
         enum Position {
             Up, Down, Null
@@ -42,19 +44,19 @@ namespace Ping_Pong {
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Bounds = Screen.PrimaryScreen.Bounds;
             this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = FormBorderStyle.None;
             this.TopMost = true;
 
             this.pbCanvas.BackColor = Color.FromArgb(0, 0, 0);
             this.pbCanvas.Size = this.Size;
-            this.pbCanvas.Location = new Point(0, 0);
+            this.pbCanvas.Bounds = this.Bounds;
         }
 
         //Spawning Ball
 
         public void SetBall() {
             var size = new Size(50, 50);
-            var location = new Point(50 + size.Width, (pbCanvas.Height / 2) - size.Height);
+            var location = new Point((pbCanvas.Width / 2) - size.Width, (pbCanvas.Height / 2) - size.Height);
 
             ball = new Ball(Brushes.White, size, location, 5);
         }
@@ -63,7 +65,7 @@ namespace Ping_Pong {
 
         public void SetWall1() {
             var size = new Size(50, 200);
-            var location = new Point(50, (pbCanvas.Height / 2) - size.Height);
+            var location = new Point(50, (pbCanvas.Height / 2) - size.Height / 2);
 
             wall1 = new Wall(Brushes.White, size, location, 5);
         }
@@ -72,7 +74,7 @@ namespace Ping_Pong {
 
         public void SetWall2() {
             var size = new Size(50, 200);
-            var location = new Point(pbCanvas.Width - 50 - size.Width, (pbCanvas.Height / 2) - size.Height);
+            var location = new Point(pbCanvas.Width - 50 - size.Width, (pbCanvas.Height / 2) - size.Height / 2);
 
             wall2 = new Wall(Brushes.White, size, location, 5);
         }
@@ -177,6 +179,7 @@ namespace Ping_Pong {
             var direction = new Point();
 
             direction.X++;
+            direction.Y++;
 
             ball.Move(direction);
 
@@ -188,7 +191,8 @@ namespace Ping_Pong {
         private void Timer3_Tick(object sender, EventArgs e) {
             var direction = new Point();
 
-            direction.X--;
+            direction.X++;
+            direction.Y--;
 
             ball.Move(direction);
 
@@ -200,7 +204,7 @@ namespace Ping_Pong {
         private void Timer4_Tick(object sender, EventArgs e) {
             var direction = new Point();
 
-            
+            direction.X--;
             direction.Y++;
 
             ball.Move(direction);
@@ -213,6 +217,7 @@ namespace Ping_Pong {
         private void Timer5_Tick(object sender, EventArgs e) {
             var direction = new Point();
 
+            direction.X--;
             direction.Y--;
 
             ball.Move(direction);
@@ -224,29 +229,210 @@ namespace Ping_Pong {
 
         private void HandleCollision() {
             var direction = new Point();
-            Boundary boundary = new Boundary(new Size(0, pbCanvas.Size.Height), new Point(0, 0));
+            Boundary boundaryBot = new Boundary(new Point(0, pbCanvas.Location.Y - ball.Size.Height), new Size(pbCanvas.Size.Width, 10));
+            Boundary boundaryTop = new Boundary(new Point(0, -1), new Size(pbCanvas.Size.Width, 10));
+            Boundary boundary = new Boundary(0, pbCanvas.Size.Width, 0, pbCanvas.Size.Height);
 
-            //if (ball.Intersect(boundary.Rectangle)) {
-            //    Timer4.Enabled = false;
-            //    Timer4.Enabled = true;
-            //}
-
-            //if (ball.Intersect(boundary.Rectangle)) {
-            //    Timer4.Enabled = false;
-            //    Timer4.Enabled = true;
-            //}
-
-            if (ball.Intersect(wall1.Rectangle)) {
-                Timer2.Enabled = true;
-                Timer3.Enabled = false;
-            }
-
-            if (ball.Intersect(wall2.Rectangle)) {
+            if (ball.Location.Y > (boundary.Down - ball.Size.Height) && num == 0) {
                 Timer2.Enabled = false;
                 Timer3.Enabled = true;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+                num = 1;
+            }
+
+            if (ball.Location.Y < boundary.Up && num == 1) {
+                Timer2.Enabled = true;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+                num = 0;
+            }
+
+            if (ball.Location.Y > (boundary.Down - ball.Size.Height) && num == 2) {
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = true;
+                num = 3;
+            }
+
+            if (ball.Location.Y < boundary.Up && num == 3) {
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = true;
+                Timer5.Enabled = false;
+                num = 2;
+            }
+
+            if (ball.Intersect(wall2.Rectangle) && num == 0) {
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = true;
+                Timer5.Enabled = false;
+
+                if (ball.Speed == 10) {
+
+                }
+                else {
+                    ball.Speed++;
+                }
+
+                if (wall1.Speed == 10) {
+
+                }
+                else {
+                    wall1.Speed++;
+                }
+
+                if (wall2.Speed == 10) {
+
+                }
+                else {
+                    wall2.Speed++;
+                }
+                num = 2;
+            }
+
+            if (ball.Intersect(wall2.Rectangle) && num == 1) {
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = true;
+
+                if (ball.Speed == 10) {
+
+                }
+                else {
+                    ball.Speed++;
+                }
+
+                if (wall1.Speed == 10) {
+
+                }
+                else {
+                    wall1.Speed++;
+                }
+
+                if (wall2.Speed == 10) {
+
+                }
+                else {
+                    wall2.Speed++;
+                }
+                num = 3;
+            }
+
+            if (ball.Intersect(wall1.Rectangle) && num == 2) {
+                Timer2.Enabled = true;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+
+                if (ball.Speed == 10) {
+
+                }
+                else {
+                    ball.Speed++;
+                }
+
+                if (wall1.Speed == 10) {
+
+                }
+                else {
+                    wall1.Speed++;
+                }
+
+                if (wall2.Speed == 10) {
+
+                }
+                else {
+                    wall2.Speed++;
+                }
+                num = 0;
+            }
+
+            if (ball.Intersect(wall1.Rectangle) && num == 3) {
+                Timer2.Enabled = false;
+                Timer3.Enabled = true;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+
+                if (ball.Speed == 10) {
+
+                }
+                else {
+                    ball.Speed++;
+                }
+
+                if (wall1.Speed == 10) {
+
+                }
+                else {
+                    wall1.Speed++;
+                }
+
+                if (wall2.Speed == 10) {
+
+                }
+                else {
+                    wall2.Speed++;
+                }
+                num = 1;
             }
 
             ball.Move(direction);
+        }
+
+        private void Form1_Load(object sender, EventArgs e) {
+            var randomDirection = rnd.Next(0, 4);
+
+            if (randomDirection == 0) {
+                num = 0;
+                Timer2.Enabled = true;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+            }
+
+            if (randomDirection == 1) {
+                num = 1;
+                Timer2.Enabled = false;
+                Timer3.Enabled = true;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+            }
+
+            if (randomDirection == 2) {
+                num = 2;
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = true;
+                Timer5.Enabled = false;
+            }
+
+            if (randomDirection == 3) {
+                num = 3;
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = true;
+            }
+
+            label1.BackColor = Color.Black;
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(pbCanvas.Width / 2 - label1.Size.Width + label3.Size.Width, 10);
+            label1.Size = new Size(50, 50);
+
+            label2.BackColor = Color.Black;
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(pbCanvas.Width / 2 - label2.Size.Width - label3.Size.Width, 10);
+            label2.Size = new Size(50, 50);
+
+            label3.BackColor = Color.Black;
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(pbCanvas.Width / 2 - label3.Size.Width, 10);
+            label3.Size = new Size(50, 50);
         }
     }
 }

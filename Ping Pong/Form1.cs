@@ -69,7 +69,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(50, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall1 = new Wall(Brushes.White, size, location, 5);
+            wall1 = new Wall(Brushes.White, size, location, 3);
         }
 
         //Spawning Wall2
@@ -78,7 +78,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(pbCanvas.Width - 50 - size.Width, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall2 = new Wall(Brushes.White, size, location, 5);
+            wall2 = new Wall(Brushes.White, size, location, 3);
         }
 
         //Drawing on Canvas
@@ -241,8 +241,7 @@ namespace Ping_Pong {
 
         private void HandleCollision() {
             var direction = new Point();
-            Boundary boundaryBot = new Boundary(new Point(0, pbCanvas.Location.Y - ball.Size.Height), new Size(pbCanvas.Size.Width, 10));
-            Boundary boundaryTop = new Boundary(new Point(0, -1), new Size(pbCanvas.Size.Width, 10));
+
             Boundary boundary = new Boundary(0, pbCanvas.Size.Width, 0, pbCanvas.Size.Height);
 
             if (ball.Location.X > boundary.Right) {

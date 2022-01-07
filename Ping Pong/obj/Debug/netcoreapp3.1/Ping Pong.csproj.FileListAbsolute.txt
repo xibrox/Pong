@@ -1,0 +1,16 @@
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\bin\Debug\netcoreapp3.1\Ping Pong.exe
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\bin\Debug\netcoreapp3.1\Ping Pong.deps.json
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\bin\Debug\netcoreapp3.1\Ping Pong.runtimeconfig.json
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\bin\Debug\netcoreapp3.1\Ping Pong.runtimeconfig.dev.json
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\bin\Debug\netcoreapp3.1\Ping Pong.dll
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\bin\Debug\netcoreapp3.1\Ping Pong.pdb
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.csproj.AssemblyReference.cache
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping_Pong.Form1.resources
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.csproj.GenerateResource.cache
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.AssemblyInfoInputs.cache
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.AssemblyInfo.cs
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.csproj.CoreCompileInputs.cache
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.dll
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.pdb
+C:\Users\baton\source\repos\Ping Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.genruntimeconfig.cache

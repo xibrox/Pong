@@ -15,6 +15,8 @@ namespace Ping_Pong {
         Wall wall2;
         Random rnd = new Random();
         int num = 0;
+        int wall1Score = 0;
+        int wall2Score = 0;
 
         enum Position {
             Up, Down, Null
@@ -227,11 +229,35 @@ namespace Ping_Pong {
             this.pbCanvas.Refresh();
         }
 
+        private void ScoreWall1() {
+            wall1Score++;
+            label1.Text = "" + wall1Score;
+        }
+
+        private void ScoreWall2() {
+            wall2Score++;
+            label2.Text = "" + wall2Score;
+        }
+
         private void HandleCollision() {
             var direction = new Point();
             Boundary boundaryBot = new Boundary(new Point(0, pbCanvas.Location.Y - ball.Size.Height), new Size(pbCanvas.Size.Width, 10));
             Boundary boundaryTop = new Boundary(new Point(0, -1), new Size(pbCanvas.Size.Width, 10));
             Boundary boundary = new Boundary(0, pbCanvas.Size.Width, 0, pbCanvas.Size.Height);
+
+            if (ball.Location.X > boundary.Right) {
+                ScoreWall2();
+                SetBall();
+                SetWall1();
+                SetWall2();
+            }
+
+            if (ball.Location.X < (boundary.Left - ball.Size.Width)) {
+                ScoreWall1();
+                SetBall();
+                SetWall1();
+                SetWall2();
+            }
 
             if (ball.Location.Y > (boundary.Down - ball.Size.Height) && num == 0) {
                 Timer2.Enabled = false;
@@ -421,18 +447,18 @@ namespace Ping_Pong {
 
             label1.BackColor = Color.Black;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(pbCanvas.Width / 2 - label1.Size.Width + label3.Size.Width, 10);
-            label1.Size = new Size(50, 50);
+            label1.Location = new Point(pbCanvas.Width / 2 - label1.Size.Width + label3.Size.Width * 2, 10);
+            label1.Font = new Font("Arial", 20);
 
             label2.BackColor = Color.Black;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(pbCanvas.Width / 2 - label2.Size.Width - label3.Size.Width, 10);
-            label2.Size = new Size(50, 50);
+            label2.Location = new Point(pbCanvas.Width / 2 - label2.Size.Width - label3.Size.Width * 2, 10);
+            label2.Font = new Font("Arial", 20);
 
             label3.BackColor = Color.Black;
             label3.ForeColor = Color.White;
             label3.Location = new Point(pbCanvas.Width / 2 - label3.Size.Width, 10);
-            label3.Size = new Size(50, 50);
+            label3.Font = new Font("Arial", 20);
         }
     }
 }

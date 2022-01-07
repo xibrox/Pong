@@ -42,11 +42,12 @@ namespace Ping_Pong {
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Bounds = Screen.PrimaryScreen.Bounds;
             this.WindowState = FormWindowState.Maximized;
-            this.FormBorderStyle = FormBorderStyle.None;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.TopMost = true;
 
             this.pbCanvas.BackColor = Color.FromArgb(0, 0, 0);
             this.pbCanvas.Size = this.Size;
+            this.pbCanvas.Location = new Point(0, 0);
         }
 
         //Spawning Ball
@@ -174,19 +175,45 @@ namespace Ping_Pong {
 
         private void Timer2_Tick(object sender, EventArgs e) {
             var direction = new Point();
-            int num = 0;
-
-            Boundary boundary = new Boundary(0, pbCanvas.Size.Width, 0, pbCanvas.Size.Height);
 
             direction.X++;
 
-            if (ball.Location.X > wall1.Location.X 
-                && ball.Location.X + ball.Size.Width < wall1.Location.X + wall1.Size.Width
-                && ball.Location.Y + ball.Size.Height > wall1.Location.Y) 
-            {
-                direction.X++;
-                direction.Y++;
-            }
+            ball.Move(direction);
+
+            HandleCollision();
+
+            this.pbCanvas.Refresh();
+        }
+
+        private void Timer3_Tick(object sender, EventArgs e) {
+            var direction = new Point();
+
+            direction.X--;
+
+            ball.Move(direction);
+
+            HandleCollision();
+
+            this.pbCanvas.Refresh();
+        }
+
+        private void Timer4_Tick(object sender, EventArgs e) {
+            var direction = new Point();
+
+            
+            direction.Y++;
+
+            ball.Move(direction);
+
+            HandleCollision();
+
+            this.pbCanvas.Refresh();
+        }
+
+        private void Timer5_Tick(object sender, EventArgs e) {
+            var direction = new Point();
+
+            direction.Y--;
 
             ball.Move(direction);
 
@@ -197,15 +224,26 @@ namespace Ping_Pong {
 
         private void HandleCollision() {
             var direction = new Point();
-            int x;
-            int y;
+            Boundary boundary = new Boundary(new Size(0, pbCanvas.Size.Height), new Point(0, 0));
+
+            //if (ball.Intersect(boundary.Rectangle)) {
+            //    Timer4.Enabled = false;
+            //    Timer4.Enabled = true;
+            //}
+
+            //if (ball.Intersect(boundary.Rectangle)) {
+            //    Timer4.Enabled = false;
+            //    Timer4.Enabled = true;
+            //}
 
             if (ball.Intersect(wall1.Rectangle)) {
-                direction.X = -direction.X;
+                Timer2.Enabled = true;
+                Timer3.Enabled = false;
             }
 
             if (ball.Intersect(wall2.Rectangle)) {
-                direction.X -= direction.X;
+                Timer2.Enabled = false;
+                Timer3.Enabled = true;
             }
 
             ball.Move(direction);

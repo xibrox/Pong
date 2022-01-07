@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\baton\\source\\repos\\Ping Pong\\Ping Pong\\Ping Pong.csproj": {}
+    "C:\\Users\\baton\\source\\repos\\Ping Pong\\Pong\\Ping Pong\\Ping Pong.csproj": {}
   },
   "projects": {
-    "C:\\Users\\baton\\source\\repos\\Ping Pong\\Ping Pong\\Ping Pong.csproj": {
+    "C:\\Users\\baton\\source\\repos\\Ping Pong\\Pong\\Ping Pong\\Ping Pong.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\baton\\source\\repos\\Ping Pong\\Ping Pong\\Ping Pong.csproj",
+        "projectUniqueName": "C:\\Users\\baton\\source\\repos\\Ping Pong\\Pong\\Ping Pong\\Ping Pong.csproj",
         "projectName": "Ping Pong",
-        "projectPath": "C:\\Users\\baton\\source\\repos\\Ping Pong\\Ping Pong\\Ping Pong.csproj",
+        "projectPath": "C:\\Users\\baton\\source\\repos\\Ping Pong\\Pong\\Ping Pong\\Ping Pong.csproj",
         "packagesPath": "C:\\Users\\baton\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\baton\\source\\repos\\Ping Pong\\Ping Pong\\obj\\",
+        "outputPath": "C:\\Users\\baton\\source\\repos\\Ping Pong\\Pong\\Ping Pong\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\baton\\AppData\\Roaming\\NuGet\\NuGet.Config",

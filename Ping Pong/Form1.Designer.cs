@@ -29,6 +29,9 @@ namespace Ping_Pong {
             this.Timer = new System.Windows.Forms.Timer(this.components);
             this.Timer1 = new System.Windows.Forms.Timer(this.components);
             this.Timer2 = new System.Windows.Forms.Timer(this.components);
+            this.Timer3 = new System.Windows.Forms.Timer(this.components);
+            this.Timer4 = new System.Windows.Forms.Timer(this.components);
+            this.Timer5 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,6 +62,21 @@ namespace Ping_Pong {
             this.Timer2.Interval = 10;
             this.Timer2.Tick += new System.EventHandler(this.Timer2_Tick);
             // 
+            // Timer3
+            // 
+            this.Timer3.Interval = 10;
+            this.Timer3.Tick += new System.EventHandler(this.Timer3_Tick);
+            // 
+            // Timer4
+            // 
+            this.Timer4.Interval = 10;
+            this.Timer4.Tick += new System.EventHandler(this.Timer4_Tick);
+            // 
+            // Timer5
+            // 
+            this.Timer5.Interval = 10;
+            this.Timer5.Tick += new System.EventHandler(this.Timer5_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -81,6 +99,9 @@ namespace Ping_Pong {
         private System.Windows.Forms.Timer Timer;
         private System.Windows.Forms.Timer Timer1;
         private System.Windows.Forms.Timer Timer2;
+        private System.Windows.Forms.Timer Timer3;
+        private System.Windows.Forms.Timer Timer4;
+        private System.Windows.Forms.Timer Timer5;
     }
 }
 

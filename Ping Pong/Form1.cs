@@ -99,6 +99,55 @@ namespace Ping_Pong {
                 this.Close();
             }
 
+            if (Keys.Space == e.KeyCode) {
+                if (GameOver.Visible == true) {
+                    var randomDirection = rnd.Next(0, 4);
+
+                    GameOver.Visible = false;
+
+                    wall1Score = 0;
+                    wall2Score = 0;
+
+                    label1.Text = "" + wall1Score;
+                    label2.Text = "" + wall2Score;
+
+                    Timer.Enabled = true;
+                    Timer1.Enabled = true;
+
+                    if (randomDirection == 0) {
+                        num = 0;
+                        Timer2.Enabled = true;
+                        Timer3.Enabled = false;
+                        Timer4.Enabled = false;
+                        Timer5.Enabled = false;
+                    }
+
+                    if (randomDirection == 1) {
+                        num = 1;
+                        Timer2.Enabled = false;
+                        Timer3.Enabled = true;
+                        Timer4.Enabled = false;
+                        Timer5.Enabled = false;
+                    }
+
+                    if (randomDirection == 2) {
+                        num = 2;
+                        Timer2.Enabled = false;
+                        Timer3.Enabled = false;
+                        Timer4.Enabled = true;
+                        Timer5.Enabled = false;
+                    }
+
+                    if (randomDirection == 3) {
+                        num = 3;
+                        Timer2.Enabled = false;
+                        Timer3.Enabled = false;
+                        Timer4.Enabled = false;
+                        Timer5.Enabled = true;
+                    }
+                }
+            }
+
             //Movement for Player1
 
             if (Keys.W == e.KeyCode) {
@@ -233,13 +282,11 @@ namespace Ping_Pong {
         private void ScoreWall1() {
             wall1Score++;
             label1.Text = "" + wall1Score;
-            GameOver.Visible = false;
         }
 
         private void ScoreWall2() {
             wall2Score++;
             label2.Text = "" + wall2Score;
-            GameOver.Visible = false;
         }
 
         private void HandleCollision() {
@@ -248,31 +295,39 @@ namespace Ping_Pong {
             Boundary boundary = new Boundary(0, pbCanvas.Size.Width, 0, pbCanvas.Size.Height);
 
             if (ball.Location.X > boundary.Right) {
-                if (wall2Score == 1) {
-                    wall1Score = -1;
-                    wall2Score = -1;
-                    GameOver.Visible = true;
-                    Thread.Sleep(2000);
-                }
-
                 ScoreWall2();
                 SetBall();
                 SetWall1();
                 SetWall2();
+
+                if (wall2Score == 5) {
+                    GameOver.Text = "         Player 1 Won\nPress Space to Continue";
+                    GameOver.Visible = true;
+                    Timer.Enabled = false;
+                    Timer1.Enabled = false;
+                    Timer2.Enabled = false;
+                    Timer3.Enabled = false;
+                    Timer4.Enabled = false;
+                    Timer5.Enabled = false;
+                }
             }
 
             if (ball.Location.X < (boundary.Left - ball.Size.Width)) {
-                if (wall1Score == 1) {
-                    wall1Score = -1;
-                    wall2Score = -1;
-                    GameOver.Visible = true;
-                    Thread.Sleep(2000);
-                }
-
                 ScoreWall1();
                 SetBall();
                 SetWall1();
                 SetWall2();
+
+                if (wall1Score == 5) {
+                    GameOver.Text = "         Player 2 Won\nPress Space to Continue";
+                    GameOver.Visible = true;
+                    Timer.Enabled = false;
+                    Timer1.Enabled = false;
+                    Timer2.Enabled = false;
+                    Timer3.Enabled = false;
+                    Timer4.Enabled = false;
+                    Timer5.Enabled = false;
+                }
             }
 
             if (ball.Location.Y > (boundary.Down - ball.Size.Height) && num == 0) {
@@ -478,7 +533,7 @@ namespace Ping_Pong {
 
             GameOver.BackColor = Color.Black;
             GameOver.ForeColor = Color.White;
-            GameOver.Location = new Point(pbCanvas.Width / 2 - GameOver.Size.Width * 3, pbCanvas.Height / 2 - GameOver.Size.Height * 3);
+            GameOver.Location = new Point(pbCanvas.Width / 2 - GameOver.Size.Width * 5, pbCanvas.Height / 2 - GameOver.Size.Height * 5);
             GameOver.Font = new Font("Arial", 50);
             GameOver.Visible = false;
         }

@@ -114,7 +114,7 @@ namespace Ping_Pong {
             // GameOver
             // 
             this.GameOver.AutoSize = true;
-            this.GameOver.Location = new System.Drawing.Point(336, 200);
+            this.GameOver.Location = new System.Drawing.Point(85, 47);
             this.GameOver.Name = "GameOver";
             this.GameOver.Size = new System.Drawing.Size(72, 15);
             this.GameOver.TabIndex = 4;

@@ -60,7 +60,7 @@ namespace Ping_Pong {
             var size = new Size(50, 50);
             var location = new Point((pbCanvas.Width / 2) - size.Width, (pbCanvas.Height / 2) - size.Height);
 
-            ball = new Ball(Brushes.White, size, location, 5);
+            ball = new Ball(Brushes.White, size, location, 25);
         }
 
         //Spawning Wall1
@@ -69,7 +69,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(50, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall1 = new Wall(Brushes.White, size, location, 3);
+            wall1 = new Wall(Brushes.White, size, location, 23);
         }
 
         //Spawning Wall2
@@ -78,7 +78,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(pbCanvas.Width - 50 - size.Width, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall2 = new Wall(Brushes.White, size, location, 3);
+            wall2 = new Wall(Brushes.White, size, location, 23);
         }
 
         //Drawing on Canvas
@@ -296,21 +296,21 @@ namespace Ping_Pong {
                 Timer4.Enabled = true;
                 Timer5.Enabled = false;
 
-                if (ball.Speed == 20) {
+                if (ball.Speed == 25) {
 
                 }
                 else {
                     ball.Speed++;
                 }
 
-                if (wall1.Speed == 20) {
+                if (wall1.Speed == 23) {
 
                 }
                 else {
                     wall1.Speed++;
                 }
 
-                if (wall2.Speed == 20) {
+                if (wall2.Speed == 23) {
 
                 }
                 else {
@@ -325,21 +325,21 @@ namespace Ping_Pong {
                 Timer4.Enabled = false;
                 Timer5.Enabled = true;
 
-                if (ball.Speed == 20) {
+                if (ball.Speed == 25) {
 
                 }
                 else {
                     ball.Speed++;
                 }
 
-                if (wall1.Speed == 20) {
+                if (wall1.Speed == 23) {
 
                 }
                 else {
                     wall1.Speed++;
                 }
 
-                if (wall2.Speed == 20) {
+                if (wall2.Speed == 23) {
 
                 }
                 else {

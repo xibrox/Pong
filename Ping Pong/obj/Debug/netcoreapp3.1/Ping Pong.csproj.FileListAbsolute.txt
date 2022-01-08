@@ -30,3 +30,4 @@ C:\Users\baton\source\repos\Ping Pong\Pong\Ping Pong\obj\Debug\netcoreapp3.1\Pin
 C:\Users\baton\source\repos\Ping Pong\Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.dll
 C:\Users\baton\source\repos\Ping Pong\Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.pdb
 C:\Users\baton\source\repos\Ping Pong\Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping Pong.genruntimeconfig.cache
+C:\Users\baton\source\repos\Ping Pong\Pong\Ping Pong\obj\Debug\netcoreapp3.1\Ping_Pong.Properties.Resources.resources

@@ -446,18 +446,19 @@ namespace Ping_Pong {
 
             label1.BackColor = Color.Black;
             label1.ForeColor = Color.White;
-            label1.Location = new Point(pbCanvas.Width / 2 - label1.Size.Width + label3.Size.Width * 2, 10);
-            label1.Font = new Font("Arial", 20);
+            label1.Location = new Point(pbCanvas.Width / 2 + label1.Size.Width, 10);
+            label1.Font = new Font("Arial", 40);
 
             label2.BackColor = Color.Black;
             label2.ForeColor = Color.White;
-            label2.Location = new Point(pbCanvas.Width / 2 - label2.Size.Width - label3.Size.Width * 2, 10);
-            label2.Font = new Font("Arial", 20);
+            label2.Location = new Point(pbCanvas.Width / 2 - label2.Size.Width * 4, 10);
+            label2.Font = new Font("Arial", 40);
 
             label3.BackColor = Color.Black;
             label3.ForeColor = Color.White;
-            label3.Location = new Point(pbCanvas.Width / 2 - label3.Size.Width, 10);
-            label3.Font = new Font("Arial", 20);
+            label3.Location = new Point(pbCanvas.Width / 2 - label3.Size.Width + 3, 15);
+            label3.Font = new Font("Arial", 30);
         }
+
     }
 }

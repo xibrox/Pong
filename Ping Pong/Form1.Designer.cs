@@ -35,6 +35,7 @@ namespace Ping_Pong {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.GameOver = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -110,11 +111,21 @@ namespace Ping_Pong {
             this.label3.TabIndex = 3;
             this.label3.Text = ":";
             // 
+            // GameOver
+            // 
+            this.GameOver.AutoSize = true;
+            this.GameOver.Location = new System.Drawing.Point(336, 200);
+            this.GameOver.Name = "GameOver";
+            this.GameOver.Size = new System.Drawing.Size(72, 15);
+            this.GameOver.TabIndex = 4;
+            this.GameOver.Text = "GAME OVER";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.GameOver);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -143,6 +154,7 @@ namespace Ping_Pong {
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label GameOver;
     }
 }
 

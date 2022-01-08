@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -232,11 +233,13 @@ namespace Ping_Pong {
         private void ScoreWall1() {
             wall1Score++;
             label1.Text = "" + wall1Score;
+            GameOver.Visible = false;
         }
 
         private void ScoreWall2() {
             wall2Score++;
             label2.Text = "" + wall2Score;
+            GameOver.Visible = false;
         }
 
         private void HandleCollision() {
@@ -245,6 +248,13 @@ namespace Ping_Pong {
             Boundary boundary = new Boundary(0, pbCanvas.Size.Width, 0, pbCanvas.Size.Height);
 
             if (ball.Location.X > boundary.Right) {
+                if (wall2Score == 1) {
+                    wall1Score = -1;
+                    wall2Score = -1;
+                    GameOver.Visible = true;
+                    Thread.Sleep(2000);
+                }
+
                 ScoreWall2();
                 SetBall();
                 SetWall1();
@@ -252,6 +262,13 @@ namespace Ping_Pong {
             }
 
             if (ball.Location.X < (boundary.Left - ball.Size.Width)) {
+                if (wall1Score == 1) {
+                    wall1Score = -1;
+                    wall2Score = -1;
+                    GameOver.Visible = true;
+                    Thread.Sleep(2000);
+                }
+
                 ScoreWall1();
                 SetBall();
                 SetWall1();
@@ -458,6 +475,12 @@ namespace Ping_Pong {
             label3.ForeColor = Color.White;
             label3.Location = new Point(pbCanvas.Width / 2 - label3.Size.Width + 3, 15);
             label3.Font = new Font("Arial", 30);
+
+            GameOver.BackColor = Color.Black;
+            GameOver.ForeColor = Color.White;
+            GameOver.Location = new Point(pbCanvas.Width / 2 - GameOver.Size.Width * 3, pbCanvas.Height / 2 - GameOver.Size.Height * 3);
+            GameOver.Font = new Font("Arial", 50);
+            GameOver.Visible = false;
         }
 
     }

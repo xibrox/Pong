@@ -60,7 +60,7 @@ namespace Ping_Pong {
             var size = new Size(50, 50);
             var location = new Point((pbCanvas.Width / 2) - size.Width, (pbCanvas.Height / 2) - size.Height);
 
-            ball = new Ball(Brushes.White, size, location, 25);
+            ball = new Ball(Brushes.White, size, location, 5);
         }
 
         //Spawning Wall1
@@ -69,7 +69,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(50, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall1 = new Wall(Brushes.White, size, location, 23);
+            wall1 = new Wall(Brushes.White, size, location, 3);
         }
 
         //Spawning Wall2
@@ -78,7 +78,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(pbCanvas.Width - 50 - size.Width, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall2 = new Wall(Brushes.White, size, location, 23);
+            wall2 = new Wall(Brushes.White, size, location, 3);
         }
 
         //Drawing on Canvas

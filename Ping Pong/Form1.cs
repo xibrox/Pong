@@ -59,7 +59,7 @@ namespace Ping_Pong {
 
         public void SetBall() {
             var size = new Size(50, 50);
-            var location = new Point((pbCanvas.Width / 2) - size.Width, (pbCanvas.Height / 2) - size.Height);
+            var location = new Point((pbCanvas.Width / 2) - size.Width / 2, (pbCanvas.Height / 2) - size.Height);
 
             ball = new Ball(Brushes.White, size, location, 5);
         }
@@ -82,6 +82,100 @@ namespace Ping_Pong {
             wall2 = new Wall(Brushes.White, size, location, 3);
         }
 
+        //Start Game Method
+
+        private void StartGame() {
+            var randomDirection = rnd.Next(0, 4);
+
+            if (Timer.Enabled == false && Timer2.Enabled == false && Timer3.Enabled == false && Timer4.Enabled == false && Timer5.Enabled == false) {
+                Timer.Enabled = true;
+                Timer1.Enabled = true;
+
+                if (randomDirection == 0) {
+                    num = 0;
+                    Timer2.Enabled = true;
+                    Timer3.Enabled = false;
+                    Timer4.Enabled = false;
+                    Timer5.Enabled = false;
+                }
+
+                if (randomDirection == 1) {
+                    num = 1;
+                    Timer2.Enabled = false;
+                    Timer3.Enabled = true;
+                    Timer4.Enabled = false;
+                    Timer5.Enabled = false;
+                }
+
+                if (randomDirection == 2) {
+                    num = 2;
+                    Timer2.Enabled = false;
+                    Timer3.Enabled = false;
+                    Timer4.Enabled = true;
+                    Timer5.Enabled = false;
+                }
+
+                if (randomDirection == 3) {
+                    num = 3;
+                    Timer2.Enabled = false;
+                    Timer3.Enabled = false;
+                    Timer4.Enabled = false;
+                    Timer5.Enabled = true;
+                }
+            }
+        }
+
+        //Game Over Method
+
+        private void EndGame() {
+            var randomDirection = rnd.Next(0, 4);
+
+            if (GameOver.Visible == true) {
+                GameOver.Visible = false;
+
+                wall1Score = 0;
+                wall2Score = 0;
+
+                label1.Text = "" + wall1Score;
+                label2.Text = "" + wall2Score;
+
+                Timer.Enabled = true;
+                Timer1.Enabled = true;
+
+                if (randomDirection == 0) {
+                    num = 0;
+                    Timer2.Enabled = true;
+                    Timer3.Enabled = false;
+                    Timer4.Enabled = false;
+                    Timer5.Enabled = false;
+                }
+
+                if (randomDirection == 1) {
+                    num = 1;
+                    Timer2.Enabled = false;
+                    Timer3.Enabled = true;
+                    Timer4.Enabled = false;
+                    Timer5.Enabled = false;
+                }
+
+                if (randomDirection == 2) {
+                    num = 2;
+                    Timer2.Enabled = false;
+                    Timer3.Enabled = false;
+                    Timer4.Enabled = true;
+                    Timer5.Enabled = false;
+                }
+
+                if (randomDirection == 3) {
+                    num = 3;
+                    Timer2.Enabled = false;
+                    Timer3.Enabled = false;
+                    Timer4.Enabled = false;
+                    Timer5.Enabled = true;
+                }
+            }
+        }
+
         //Drawing on Canvas
 
         private void pbCanvas_Paint(object sender, PaintEventArgs e) {
@@ -100,72 +194,33 @@ namespace Ping_Pong {
             }
 
             if (Keys.Space == e.KeyCode) {
-                if (GameOver.Visible == true) {
-                    var randomDirection = rnd.Next(0, 4);
+                StartGame();
 
-                    GameOver.Visible = false;
-
-                    wall1Score = 0;
-                    wall2Score = 0;
-
-                    label1.Text = "" + wall1Score;
-                    label2.Text = "" + wall2Score;
-
-                    Timer.Enabled = true;
-                    Timer1.Enabled = true;
-
-                    if (randomDirection == 0) {
-                        num = 0;
-                        Timer2.Enabled = true;
-                        Timer3.Enabled = false;
-                        Timer4.Enabled = false;
-                        Timer5.Enabled = false;
-                    }
-
-                    if (randomDirection == 1) {
-                        num = 1;
-                        Timer2.Enabled = false;
-                        Timer3.Enabled = true;
-                        Timer4.Enabled = false;
-                        Timer5.Enabled = false;
-                    }
-
-                    if (randomDirection == 2) {
-                        num = 2;
-                        Timer2.Enabled = false;
-                        Timer3.Enabled = false;
-                        Timer4.Enabled = true;
-                        Timer5.Enabled = false;
-                    }
-
-                    if (randomDirection == 3) {
-                        num = 3;
-                        Timer2.Enabled = false;
-                        Timer3.Enabled = false;
-                        Timer4.Enabled = false;
-                        Timer5.Enabled = true;
-                    }
-                }
+                EndGame();
             }
 
             //Movement for Player1
 
             if (Keys.W == e.KeyCode) {
                 position1 = Position1.W;
+                StartGame();
             }
 
             if (Keys.S == e.KeyCode) {
                 position1 = Position1.S;
+                StartGame();
             }
 
             //Movement for Player2
 
             if (Keys.Up == e.KeyCode) {
                 position = Position.Up;
+                StartGame();
             }
 
             if (Keys.Down == e.KeyCode) {
                 position = Position.Down;
+                StartGame();
             }
         }
 
@@ -482,40 +537,6 @@ namespace Ping_Pong {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            var randomDirection = rnd.Next(0, 4);
-
-            if (randomDirection == 0) {
-                num = 0;
-                Timer2.Enabled = true;
-                Timer3.Enabled = false;
-                Timer4.Enabled = false;
-                Timer5.Enabled = false;
-            }
-
-            if (randomDirection == 1) {
-                num = 1;
-                Timer2.Enabled = false;
-                Timer3.Enabled = true;
-                Timer4.Enabled = false;
-                Timer5.Enabled = false;
-            }
-
-            if (randomDirection == 2) {
-                num = 2;
-                Timer2.Enabled = false;
-                Timer3.Enabled = false;
-                Timer4.Enabled = true;
-                Timer5.Enabled = false;
-            }
-
-            if (randomDirection == 3) {
-                num = 3;
-                Timer2.Enabled = false;
-                Timer3.Enabled = false;
-                Timer4.Enabled = false;
-                Timer5.Enabled = true;
-            }
-
             label1.BackColor = Color.Black;
             label1.ForeColor = Color.White;
             label1.Location = new Point(pbCanvas.Width / 2 + label1.Size.Width, 10);

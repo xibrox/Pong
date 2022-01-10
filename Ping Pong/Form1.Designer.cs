@@ -130,6 +130,7 @@ namespace Ping_Pong {
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbCanvas);
+            this.Cursor = System.Windows.Forms.Cursors.No;
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "Pong";

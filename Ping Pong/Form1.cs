@@ -53,6 +53,8 @@ namespace Ping_Pong {
             this.pbCanvas.BackColor = Color.FromArgb(0, 0, 0);
             this.pbCanvas.Size = this.Size;
             this.pbCanvas.Bounds = this.Bounds;
+
+            Cursor.Hide();
         }
 
         //Spawning Ball

@@ -15,11 +15,23 @@ namespace Ping_Pong {
         }
         public int Speed { get; set; }
 
+        public int Left { get; set; }
+        public int Right { get; set; }
+        public int Up { get; set; }
+        public int Down { get; set; }
+
         public Wall(Brush brush, Size size, Point location, int speed) {
             Brush = brush;
             Size = size;
             Location = location;
             Speed = speed;
+        }
+
+        public Wall(int left, int right, int up, int down) {
+            Left = left;
+            Right = right;
+            Up = up;
+            Down = down;
         }
 
         public void Draw(Graphics graphics) {

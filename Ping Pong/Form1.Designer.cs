@@ -51,11 +51,13 @@ namespace Ping_Pong {
             // 
             // Timer
             // 
+            this.Timer.Enabled = true;
             this.Timer.Interval = 10;
             this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // Timer1
             // 
+            this.Timer1.Enabled = true;
             this.Timer1.Interval = 10;
             this.Timer1.Tick += new System.EventHandler(this.Timer1_Tick);
             // 
@@ -128,6 +130,7 @@ namespace Ping_Pong {
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pbCanvas);
+            this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "Form1";

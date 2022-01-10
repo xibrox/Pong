@@ -87,10 +87,7 @@ namespace Ping_Pong {
         private void StartGame() {
             var randomDirection = rnd.Next(0, 4);
 
-            if (Timer.Enabled == false && Timer2.Enabled == false && Timer3.Enabled == false && Timer4.Enabled == false && Timer5.Enabled == false) {
-                Timer.Enabled = true;
-                Timer1.Enabled = true;
-
+            if (Timer.Enabled == true && Timer1.Enabled == true && Timer2.Enabled == false && Timer3.Enabled == false && Timer4.Enabled == false && Timer5.Enabled == false) {
                 if (randomDirection == 0) {
                     num = 0;
                     Timer2.Enabled = true;
@@ -349,11 +346,12 @@ namespace Ping_Pong {
 
             Boundary boundary = new Boundary(0, pbCanvas.Size.Width, 0, pbCanvas.Size.Height);
 
+            Wall wall1Bound = new Wall(0, wall1.Size.Width, 0, wall1.Size.Height);
+            Wall wall2Bound = new Wall(0, wall2.Size.Width, 0, wall2.Size.Height);
+
             if (ball.Location.X > boundary.Right) {
                 ScoreWall2();
                 SetBall();
-                SetWall1();
-                SetWall2();
 
                 if (wall2Score == 5) {
                     GameOver.Text = "         Player 1 Won\nPress Space to Continue";
@@ -364,14 +362,14 @@ namespace Ping_Pong {
                     Timer3.Enabled = false;
                     Timer4.Enabled = false;
                     Timer5.Enabled = false;
+                    SetWall1();
+                    SetWall2();
                 }
             }
 
             if (ball.Location.X < (boundary.Left - ball.Size.Width)) {
                 ScoreWall1();
                 SetBall();
-                SetWall1();
-                SetWall2();
 
                 if (wall1Score == 5) {
                     GameOver.Text = "         Player 2 Won\nPress Space to Continue";
@@ -382,6 +380,8 @@ namespace Ping_Pong {
                     Timer3.Enabled = false;
                     Timer4.Enabled = false;
                     Timer5.Enabled = false;
+                    SetWall1();
+                    SetWall2();
                 }
             }
 
@@ -475,7 +475,7 @@ namespace Ping_Pong {
                 num = 3;
             }
 
-            if (ball.Intersect(wall1.Rectangle) && num == 2) {
+            if (ball.Intersect(wall1.Rectangle)&& num == 2) {
                 Timer2.Enabled = true;
                 Timer3.Enabled = false;
                 Timer4.Enabled = false;

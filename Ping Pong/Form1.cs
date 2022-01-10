@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ping_Pong {
-    public partial class Form1 : Form {
+    public partial class Pong : Form {
         Ball ball;
         Wall wall1;
         Wall wall2;
@@ -30,7 +30,7 @@ namespace Ping_Pong {
         private Position position;
         private Position1 position1;
 
-        public Form1() {
+        public Pong() {
             InitializeComponent();
             Init();
 

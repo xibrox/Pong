@@ -1,6 +1,6 @@
 ﻿
 namespace Ping_Pong {
-    partial class Form1 {
+    partial class Pong {
         /// <summary>
         ///  Required designer variable.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Ping_Pong {
             this.GameOver.TabIndex = 4;
             this.GameOver.Text = "GAME OVER";
             // 
-            // Form1
+            // Pong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -132,8 +132,8 @@ namespace Ping_Pong {
             this.Controls.Add(this.pbCanvas);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Pong";
+            this.Text = "Pong";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Form1_KeyUp);

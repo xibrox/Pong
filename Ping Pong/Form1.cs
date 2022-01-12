@@ -365,11 +365,11 @@ namespace Ping_Pong {
             var wall1Boun = new Wall(Brushes.White, new Size(1, wall1.Size.Height - 2), new Point(wall1.Location.X + wall1.Size.Width - 1, wall1.Location.Y + 1), 5);
             var wall2Boun = new Wall(Brushes.White, new Size(1, wall2.Size.Height - 2), new Point(wall2.Location.X, wall2.Location.Y + 1), 5);
 
-            var wall1BounTop = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall1.Location.X, wall1.Location.Y), 5);
-            var wall2BounTop = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall2.Location.X, wall2.Location.Y), 5);
+            var wall1BounTop = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall1.Location.X, wall1.Location.Y - 1), 5);
+            var wall2BounTop = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall2.Location.X, wall2.Location.Y - 1), 5);
 
-            var wall1BounBot = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall1.Location.X, wall1.Size.Height), 5);
-            var wall2BounBot = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall2.Location.X, wall2.Size.Height), 5);
+            var wall1BounBot = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall1.Location.X, wall1.Size.Height + 1), 5);
+            var wall2BounBot = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall2.Location.X, wall2.Size.Height + 1), 5);
 
             if (ball.Location.X > boundary.Right) {
                 ScoreWall2();
@@ -526,7 +526,7 @@ namespace Ping_Pong {
                 num = 1;
             }
 
-            if (ball.Intersect(wall2Boun.Rectangle) && num == 1) {
+            if (ball.Intersect(wall2BounBot.Rectangle) && num == 1) {
                 Timer2.Enabled = true;
                 Timer3.Enabled = false;
                 Timer4.Enabled = false;
@@ -642,7 +642,7 @@ namespace Ping_Pong {
                 num = 3;
             }
 
-            if (ball.Intersect(wall1Boun.Rectangle) && num == 3) {
+            if (ball.Intersect(wall1BounBot.Rectangle) && num == 3) {
                 Timer2.Enabled = false;
                 Timer3.Enabled = false;
                 Timer4.Enabled = true;

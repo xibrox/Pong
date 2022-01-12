@@ -198,8 +198,6 @@ namespace Ping_Pong {
                 EndGame();
             }
 
-            //Movement for Player1
-
             if (Keys.W == e.KeyCode) {
                 position1 = Position1.W;
                 StartGame();
@@ -209,8 +207,6 @@ namespace Ping_Pong {
                 position1 = Position1.S;
                 StartGame();
             }
-
-            //Movement for Player2
 
             if (Keys.Up == e.KeyCode) {
                 position = Position.Up;
@@ -224,7 +220,6 @@ namespace Ping_Pong {
         }
 
         private void Form1_KeyUp(object sender, KeyEventArgs e) {
-            //Movement for Player1
 
             if (Keys.W == e.KeyCode) {
                 position1 = Position1.Null;
@@ -234,7 +229,6 @@ namespace Ping_Pong {
                 position1 = Position1.Null;
             }
 
-            //Movement for Player2
 
             if (Keys.Up == e.KeyCode) {
                 position = Position.Null;
@@ -244,6 +238,8 @@ namespace Ping_Pong {
                 position = Position.Null;
             }
         }
+
+        //Player1 on left Movement
 
         private void Timer_Tick(object sender, EventArgs e) {
             var direction = new Point();
@@ -263,6 +259,8 @@ namespace Ping_Pong {
             this.pbCanvas.Refresh();
         }
 
+        //Player2 on right Movement
+
         private void Timer1_Tick(object sender, EventArgs e) {
             var direction = new Point();
 
@@ -281,6 +279,9 @@ namespace Ping_Pong {
             this.pbCanvas.Refresh();
         }
 
+        //Right
+        //Down
+
         private void Timer2_Tick(object sender, EventArgs e) {
             var direction = new Point();
 
@@ -293,6 +294,9 @@ namespace Ping_Pong {
 
             this.pbCanvas.Refresh();
         }
+
+        //Right
+        //Up
 
         private void Timer3_Tick(object sender, EventArgs e) {
             var direction = new Point();
@@ -307,6 +311,9 @@ namespace Ping_Pong {
             this.pbCanvas.Refresh();
         }
 
+        //Left
+        //Down
+
         private void Timer4_Tick(object sender, EventArgs e) {
             var direction = new Point();
 
@@ -319,6 +326,9 @@ namespace Ping_Pong {
 
             this.pbCanvas.Refresh();
         }
+
+        //Left
+        //Up
 
         private void Timer5_Tick(object sender, EventArgs e) {
             var direction = new Point();
@@ -333,10 +343,14 @@ namespace Ping_Pong {
             this.pbCanvas.Refresh();
         }
 
+        //Score for Player1
+
         private void ScoreWall1() {
             wall1Score++;
             label1.Text = "" + wall1Score;
         }
+
+        //Score for Player2
 
         private void ScoreWall2() {
             wall2Score++;
@@ -347,9 +361,15 @@ namespace Ping_Pong {
             var direction = new Point();
 
             Boundary boundary = new Boundary(0, pbCanvas.Size.Width, 0, pbCanvas.Size.Height);
+            
+            var wall1Boun = new Wall(Brushes.White, new Size(1, wall1.Size.Height - 2), new Point(wall1.Location.X + wall1.Size.Width - 1, wall1.Location.Y + 1), 5);
+            var wall2Boun = new Wall(Brushes.White, new Size(1, wall2.Size.Height - 2), new Point(wall2.Location.X, wall2.Location.Y + 1), 5);
 
-            Wall wall1Bound = new Wall(0, wall1.Size.Width, 0, wall1.Size.Height);
-            Wall wall2Bound = new Wall(0, wall2.Size.Width, 0, wall2.Size.Height);
+            var wall1BounTop = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall1.Location.X, wall1.Location.Y), 5);
+            var wall2BounTop = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall2.Location.X, wall2.Location.Y), 5);
+
+            var wall1BounBot = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall1.Location.X, wall1.Size.Height), 5);
+            var wall2BounBot = new Wall(Brushes.White, new Size(wall1.Size.Width, 1), new Point(wall2.Location.X, wall2.Size.Height), 5);
 
             if (ball.Location.X > boundary.Right) {
                 ScoreWall2();
@@ -419,7 +439,7 @@ namespace Ping_Pong {
                 num = 2;
             }
 
-            if (ball.Intersect(wall2.Rectangle) && num == 0) {
+            if (ball.Intersect(wall2Boun.Rectangle) && num == 0) {
                 Timer2.Enabled = false;
                 Timer3.Enabled = false;
                 Timer4.Enabled = true;
@@ -448,7 +468,7 @@ namespace Ping_Pong {
                 num = 2;
             }
 
-            if (ball.Intersect(wall2.Rectangle) && num == 1) {
+            if (ball.Intersect(wall2Boun.Rectangle) && num == 1) {
                 Timer2.Enabled = false;
                 Timer3.Enabled = false;
                 Timer4.Enabled = false;
@@ -477,7 +497,65 @@ namespace Ping_Pong {
                 num = 3;
             }
 
-            if (ball.Intersect(wall1.Rectangle)&& num == 2) {
+            if (ball.Intersect(wall2BounTop.Rectangle) && num == 0) {
+                Timer2.Enabled = false;
+                Timer3.Enabled = true;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+
+                if (ball.Speed == 25) {
+
+                }
+                else {
+                    ball.Speed++;
+                }
+
+                if (wall1.Speed == 23) {
+
+                }
+                else {
+                    wall1.Speed++;
+                }
+
+                if (wall2.Speed == 23) {
+
+                }
+                else {
+                    wall2.Speed++;
+                }
+                num = 1;
+            }
+
+            if (ball.Intersect(wall2Boun.Rectangle) && num == 1) {
+                Timer2.Enabled = true;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+
+                if (ball.Speed == 25) {
+
+                }
+                else {
+                    ball.Speed++;
+                }
+
+                if (wall1.Speed == 23) {
+
+                }
+                else {
+                    wall1.Speed++;
+                }
+
+                if (wall2.Speed == 23) {
+
+                }
+                else {
+                    wall2.Speed++;
+                }
+                num = 0;
+            }
+
+            if (ball.Intersect(wall1Boun.Rectangle)&& num == 2) {
                 Timer2.Enabled = true;
                 Timer3.Enabled = false;
                 Timer4.Enabled = false;
@@ -506,7 +584,7 @@ namespace Ping_Pong {
                 num = 0;
             }
 
-            if (ball.Intersect(wall1.Rectangle) && num == 3) {
+            if (ball.Intersect(wall1Boun.Rectangle) && num == 3) {
                 Timer2.Enabled = false;
                 Timer3.Enabled = true;
                 Timer4.Enabled = false;
@@ -533,6 +611,64 @@ namespace Ping_Pong {
                     wall2.Speed++;
                 }
                 num = 1;
+            }
+
+            if (ball.Intersect(wall1BounTop.Rectangle) && num == 2) {
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = true;
+
+                if (ball.Speed == 20) {
+
+                }
+                else {
+                    ball.Speed++;
+                }
+
+                if (wall1.Speed == 20) {
+
+                }
+                else {
+                    wall1.Speed++;
+                }
+
+                if (wall2.Speed == 20) {
+
+                }
+                else {
+                    wall2.Speed++;
+                }
+                num = 3;
+            }
+
+            if (ball.Intersect(wall1Boun.Rectangle) && num == 3) {
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = true;
+                Timer5.Enabled = false;
+
+                if (ball.Speed == 20) {
+
+                }
+                else {
+                    ball.Speed++;
+                }
+
+                if (wall1.Speed == 20) {
+
+                }
+                else {
+                    wall1.Speed++;
+                }
+
+                if (wall2.Speed == 20) {
+
+                }
+                else {
+                    wall2.Speed++;
+                }
+                num = 2;
             }
 
             ball.Move(direction);

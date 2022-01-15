@@ -135,9 +135,6 @@ namespace Ping_Pong {
                 wall1Score = 0;
                 wall2Score = 0;
 
-                label1.Text = "" + wall1Score;
-                label2.Text = "" + wall2Score;
-
                 Timer.Enabled = true;
                 Timer1.Enabled = true;
 
@@ -185,6 +182,10 @@ namespace Ping_Pong {
             wall1.Draw(g);
 
             wall2.Draw(g);
+
+            g.DrawString(":", new Font("Arial", 30), Brushes.White, new Point(pbCanvas.Width / 2 - 4, 15));
+            g.DrawString("" + wall1Score, new Font("Arial", 40), Brushes.White, new Point(pbCanvas.Width / 2 + 11, 10));
+            g.DrawString("" + wall2Score, new Font("Arial", 40), Brushes.White, new Point(pbCanvas.Width / 2 - 10 * 4, 10));
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e) {
@@ -347,14 +348,12 @@ namespace Ping_Pong {
 
         private void ScoreWall1() {
             wall1Score++;
-            label1.Text = "" + wall1Score;
         }
 
         //Score for Player2
 
         private void ScoreWall2() {
             wall2Score++;
-            label2.Text = "" + wall2Score;
         }
 
         private void HandleCollision() {
@@ -675,21 +674,6 @@ namespace Ping_Pong {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            label1.BackColor = Color.Black;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(pbCanvas.Width / 2 + label1.Size.Width, 10);
-            label1.Font = new Font("Arial", 40);
-
-            label2.BackColor = Color.Black;
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(pbCanvas.Width / 2 - label2.Size.Width * 4, 10);
-            label2.Font = new Font("Arial", 40);
-
-            label3.BackColor = Color.Black;
-            label3.ForeColor = Color.White;
-            label3.Location = new Point(pbCanvas.Width / 2 - label3.Size.Width + 3, 15);
-            label3.Font = new Font("Arial", 30);
-
             GameOver.BackColor = Color.Black;
             GameOver.ForeColor = Color.White;
             GameOver.Location = new Point(pbCanvas.Width / 2 - GameOver.Size.Width * 5, pbCanvas.Height / 2 - GameOver.Size.Height * 5);

@@ -9,3 +9,4 @@ Pong Game
 1.3.1 ... Hidden Cursor
 1.4.1 ... Some Fixes
 1.5.1 ... More Fixes
+1.6.1 ... Score Fix

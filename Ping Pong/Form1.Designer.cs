@@ -94,7 +94,7 @@ namespace Ping_Pong {
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.GameOver);
             this.Controls.Add(this.pbCanvas);
-            this.Cursor = System.Windows.Forms.Cursors.No;
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.Name = "Pong";

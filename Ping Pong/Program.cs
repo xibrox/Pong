@@ -14,7 +14,7 @@ namespace Ping_Pong {
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Pong());
+            Application.Run(new Form2());
         }
     }
 }

@@ -24,7 +24,7 @@ namespace Ping_Pong {
         }
 
         enum Position1 {
-            Null, Space
+            W, S, Null, Space
         }
 
         private int position1R = 0;
@@ -50,7 +50,6 @@ namespace Ping_Pong {
             this.Bounds = Screen.PrimaryScreen.Bounds;
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
-            this.TopMost = true;
 
             this.pbCanvas.BackColor = Color.FromArgb(0, 0, 0);
             this.pbCanvas.Size = this.Size;
@@ -87,6 +86,9 @@ namespace Ping_Pong {
         //Start Game Method
 
         private void StartGame() {
+            Timer.Enabled = true;
+            Timer1.Enabled = true;
+
             var randomDirection = rnd.Next(0, 4);
 
             if (Timer.Enabled == true && Timer1.Enabled == true && Timer2.Enabled == false && Timer3.Enabled == false && Timer4.Enabled == false && Timer5.Enabled == false) {
@@ -202,22 +204,18 @@ namespace Ping_Pong {
 
             if (Keys.W == e.KeyCode) {
                 position1R = Form2.Position1W;
-                StartGame();
             }
 
             if (Keys.S == e.KeyCode) {
                 position1R = Form2.Position1S;
-                StartGame();
             }
 
             if (Keys.Up == e.KeyCode) {
                 position = Position.Up;
-                StartGame();
             }
 
             if (Keys.Down == e.KeyCode) {
                 position = Position.Down;
-                StartGame();
             }
         }
 
@@ -256,11 +254,11 @@ namespace Ping_Pong {
                 direction.Y++;
             }
 
-            if (Form2.Bot == true && position1 == Position1.Space && wall1.Location.Y + wall1.Size.Height / 2 > ball.Location.Y && wall1.Location.Y > boundary.Up) {
+            if (position1 == Position1.Space && Form2.Bot == true && wall1.Location.Y + wall1.Size.Height / 2 > ball.Location.Y && wall1.Location.Y > boundary.Up) {
                 direction.Y--;
             }
 
-            if (Form2.Bot == true && position1 == Position1.Space && wall1.Location.Y + wall1.Size.Height / 2 < ball.Location.Y && wall1.Location.Y < (boundary.Down - wall2.Size.Height)) {
+            if (position1 == Position1.Space && Form2.Bot == true && wall1.Location.Y + wall1.Size.Height / 2 < ball.Location.Y && wall1.Location.Y < (boundary.Down - wall2.Size.Height)) {
                 direction.Y++;
             }
 
@@ -693,9 +691,28 @@ namespace Ping_Pong {
         private void Form1_Load(object sender, EventArgs e) {
             GameOver.BackColor = Color.Black;
             GameOver.ForeColor = Color.White;
-            GameOver.Location = new Point(pbCanvas.Width / 2 - GameOver.Size.Width * 5, pbCanvas.Height / 2 - GameOver.Size.Height * 5);
+            GameOver.Location = new Point(pbCanvas.Width / 2 - GameOver.Size.Width * 5, pbCanvas.Height / 2 - GameOver.Size.Height * 8);
             GameOver.Font = new Font("Arial", 50);
             GameOver.Visible = false;
+
+            if (this.Visible == false) {
+                SetWall1();
+                SetWall2();
+                SetBall();
+
+                position = Position.Null;
+                position1 = Position1.Null;
+
+                wall1Score = 0;
+                wall2Score = 0;
+
+                Timer.Enabled = false;
+                Timer1.Enabled = false;
+                Timer2.Enabled = false;
+                Timer3.Enabled = false;
+                Timer4.Enabled = false;
+                Timer5.Enabled = false;
+            }
         }
 
     }

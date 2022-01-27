@@ -11,3 +11,4 @@ Pong Game
 1.5.1 ... More Fixes
 1.6.1 ... Score Fix
 1.0.2 ... Choose between Playing Alone and Playing Together
+1.1.2 ... Fixes

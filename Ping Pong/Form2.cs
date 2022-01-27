@@ -23,7 +23,6 @@ namespace Ping_Pong {
             this.Size = Screen.PrimaryScreen.WorkingArea.Size;
             this.Bounds = Screen.PrimaryScreen.Bounds;
             this.WindowState = FormWindowState.Maximized;
-            this.TopMost = true;
 
             BackColor = Color.Black;
         }
@@ -46,7 +45,6 @@ namespace Ping_Pong {
             Position1S = 1;
             Position1W = 2;
             Bot = false;
-            
 
             pg.ShowDialog();
 
@@ -80,8 +78,27 @@ namespace Ping_Pong {
                 }
             }
 
+            Bitmap bmp1 = new Bitmap(PongLabel.Width, PongLabel.Height);
+            using (Graphics g = Graphics.FromImage(bmp1)) {
+                Rectangle r = new Rectangle(0, 0, bmp1.Width, bmp1.Height);
+                using (LinearGradientBrush br = new LinearGradientBrush(
+                                                    r,
+                                                    Color.DarkGray,
+                                                    Color.Black,
+                                                    LinearGradientMode.Vertical)) {
+                    g.FillRectangle(br, r);
+                }
+            }
+
             Player1.BackgroundImage = bmp;
             Player2.BackgroundImage = bmp;
+            PongLabel.BackgroundImage = bmp1;
+        }
+
+        private void Form2_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                this.Close();
+            }
         }
     }
 }

@@ -62,7 +62,7 @@ namespace Ping_Pong {
             var size = new Size(50, 50);
             var location = new Point((pbCanvas.Width / 2) - size.Width / 2, (pbCanvas.Height / 2) - size.Height);
 
-            ball = new Ball(Brushes.White, size, location, 5);
+            ball = new Ball(Brushes.White, size, location, 7);
         }
 
         //Spawning Wall1
@@ -71,7 +71,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(50, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall1 = new Wall(Brushes.White, size, location, 3);
+            wall1 = new Wall(Brushes.White, size, location, 5);
         }
 
         //Spawning Wall2
@@ -80,7 +80,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(pbCanvas.Width - 50 - size.Width, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall2 = new Wall(Brushes.White, size, location, 3);
+            wall2 = new Wall(Brushes.White, size, location, 5);
         }
 
         //Start Game Method
@@ -381,9 +381,9 @@ namespace Ping_Pong {
                 ScoreWall2();
                 SetBall();
 
-                wall1.Speed = 3;
-                wall2.Speed = 3;
-                ball.Speed = 5;
+                wall1.Speed = 5;
+                wall2.Speed = 5;
+                ball.Speed = 7;
 
                 if (wall2Score == 5) {
                     GameOver.Text = "         Player 1 Won\nPress Space to Continue";
@@ -403,9 +403,9 @@ namespace Ping_Pong {
                 ScoreWall1();
                 SetBall();
 
-                wall1.Speed = 3;
-                wall2.Speed = 3;
-                ball.Speed = 5;
+                wall1.Speed = 5;
+                wall2.Speed = 5;
+                ball.Speed = 7;
 
                 if (wall1Score == 5) {
                     GameOver.Text = "         Player 2 Won\nPress Space to Continue";

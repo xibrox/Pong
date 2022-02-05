@@ -51,7 +51,7 @@ namespace Ping_Pong {
             this.WindowState = FormWindowState.Maximized;
             this.FormBorderStyle = FormBorderStyle.None;
 
-            this.pbCanvas.BackColor = Color.FromArgb(0, 0, 0);
+            this.pbCanvas.BackColor = Color.FromArgb(26, 26, 26);
             this.pbCanvas.Size = this.Size;
             this.pbCanvas.Bounds = this.Bounds;
         }
@@ -62,7 +62,7 @@ namespace Ping_Pong {
             var size = new Size(50, 50);
             var location = new Point((pbCanvas.Width / 2) - size.Width / 2, (pbCanvas.Height / 2) - size.Height);
 
-            ball = new Ball(Brushes.White, size, location, 7);
+            ball = new Ball(new SolidBrush(Color.FromArgb(179, 179, 179)), size, location, 7);
         }
 
         //Spawning Wall1
@@ -71,7 +71,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(50, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall1 = new Wall(Brushes.White, size, location, 5);
+            wall1 = new Wall(new SolidBrush(Color.FromArgb(179, 179, 179)), size, location, 5);
         }
 
         //Spawning Wall2
@@ -80,7 +80,7 @@ namespace Ping_Pong {
             var size = new Size(50, 200);
             var location = new Point(pbCanvas.Width - 50 - size.Width, (pbCanvas.Height / 2) - size.Height / 2);
 
-            wall2 = new Wall(Brushes.White, size, location, 5);
+            wall2 = new Wall(new SolidBrush(Color.FromArgb(179, 179, 179)), size, location, 5);
         }
 
         //Start Game Method
@@ -185,9 +185,9 @@ namespace Ping_Pong {
 
             wall2.Draw(g);
 
-            g.DrawString(":", new Font("Arial", 30), Brushes.White, new Point(pbCanvas.Width / 2 - 4, 15));
-            g.DrawString("" + wall1Score, new Font("Arial", 40), Brushes.White, new Point(pbCanvas.Width / 2 + 11, 10));
-            g.DrawString("" + wall2Score, new Font("Arial", 40), Brushes.White, new Point(pbCanvas.Width / 2 - 10 * 4, 10));
+            g.DrawString(":", new Font("Arial", 30), new SolidBrush(Color.FromArgb(179, 179, 179)), new Point(pbCanvas.Width / 2 - 4, 15));
+            g.DrawString("" + wall1Score, new Font("Arial", 40), new SolidBrush(Color.FromArgb(179, 179, 179)), new Point(pbCanvas.Width / 2 + 11, 10));
+            g.DrawString("" + wall2Score, new Font("Arial", 40), new SolidBrush(Color.FromArgb(179, 179, 179)), new Point(pbCanvas.Width / 2 - 10 * 4, 10));
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e) {
@@ -690,7 +690,7 @@ namespace Ping_Pong {
 
         private void Form1_Load(object sender, EventArgs e) {
             GameOver.BackColor = Color.Black;
-            GameOver.ForeColor = Color.White;
+            GameOver.ForeColor = Color.FromArgb(179, 179, 179);
             GameOver.Location = new Point(pbCanvas.Width / 2 - GameOver.Size.Width * 5, pbCanvas.Height / 2 - GameOver.Size.Height * 8);
             GameOver.Font = new Font("Arial", 50);
             GameOver.Visible = false;
